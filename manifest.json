@@ -1,0 +1,46 @@
+
+// 插件配置文件
+
+{
+	//扩展信息
+  "manifest_version": 2,
+  "name": "圈地自萌屏蔽插件",
+  "description": "该插件会自动读取你的用户屏蔽列表，对其回答和评论进行屏蔽；点击选项可进行词汇屏蔽！",
+  "version": "1.0",
+  //扩展需要用到的权限
+  "permissions": [
+     "tabs",
+     "storage",
+     "https://www.zhihu.com/"
+  ],
+  //扩展图标
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  //匹配指定类型tabs执行的脚本
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.zhihu.com/*"
+      ],
+      "js": [
+       "jquery-3.2.1.min.js", "block.js"
+      ]
+    }
+  ],
+  //点击扩展，弹出的窗体
+  "browser_action": {
+    "default_icon": "icon16.png",
+    "default_title": "启用／关闭",
+    "default_popup": "popup.html"
+  },
+
+  //选项
+  "options_ui" :  
+  {
+        "page": "options.html",
+        "chrome_style": true
+    }
+}
